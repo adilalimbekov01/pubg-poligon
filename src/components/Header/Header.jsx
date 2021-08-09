@@ -27,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
       main: '#f44336',
       dark: '#ba000d',
       contrastText: '#000',
+    
     },
+    backgroundColor:'#e64a19'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -178,7 +180,7 @@ const Header = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor:'#ffab91'}}>
         <Toolbar>
           <Link to="/home" style ={{textDecoration: 'none', color:'white'}}>
             <Typography className={classes.title} variant="h6" noWrap>

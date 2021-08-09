@@ -19,8 +19,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 300,
-    height: 400,
+    width: 320,
+    height: 450,
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
   },
   media: {
@@ -79,7 +79,7 @@ const ProductCard = ({ item }) => {
       </CardContent>
       <CardActions disableSpacing>
         <Container>
-          <Box component="span" m={1} style={{color:'#e91e63'}}>
+          <Box component="span" m={1} style={{color:'#ff8a65', fontSize:'20px'}}>
             {item.price}с
           </Box>
         </Container>
@@ -95,7 +95,7 @@ const ProductCard = ({ item }) => {
             <EditIcon />
           </IconButton>
           <IconButton aria-label="share" onClick={() => deleteProduct(item.id)}>
-            <DeleteIcon style={{color:'#ec407a'}} />
+            <DeleteIcon style={{color:'#e64a19'}} />
           </IconButton>
         </Container>
       </CardActions>

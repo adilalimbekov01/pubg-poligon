@@ -3,8 +3,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 import { ACTIONS, AUTH_API_LOGIN } from '../helpers/consts';
 import { AUTH_API_REG } from './../helpers/consts';
 import jwt_decode from 'jwt-decode';
-import { useHistory } from 'react-router';
-import { actions } from 'react-table';
+
 
 const authContext = createContext();
 

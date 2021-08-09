@@ -10,6 +10,7 @@ import Cart from '../components/Cart/Cart';
 import Login from '../components/Auth/Login';
 import Registration from '../components/Auth/Registration';
 import Main from '../components/Home/Main';
+import AboutUs from '../components/Home/AboutUs';
 
 const Routes = () => {
   return (
@@ -25,6 +26,7 @@ const Routes = () => {
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/details/:id" component={ProductDetails} />
           <Route exact path="/edit/:id" component={EditProductPage} />
+          <Route exact path='/aboutus' component={AboutUs}/>
         </Switch>
       </ProductContextProvider>
     </BrowserRouter>

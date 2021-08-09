@@ -7,7 +7,9 @@ import SideBar from './SideBar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 20,
+  backgroundColor:'#ffccbc',
+  paddingTop: 20,
+  paddingBottom: 100,
   },
   boot:{
     flexWrap: 'nowrap',

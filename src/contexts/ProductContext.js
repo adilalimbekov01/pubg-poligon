@@ -63,7 +63,7 @@ const ProductContextProvider = ({ children }) => {
 
   const saveEditedProduct = async (id, editedProduct) => {
     const data = await axios.patch(`${JSON_API_PRODUCTS}/${id}`, editedProduct);
-    history.push('/');
+    history.push('/home');
   };
 
   const getCart = () => {
@@ -72,7 +72,7 @@ const ProductContextProvider = ({ children }) => {
       localStorage.setItem(
         'cart',
         JSON.stringify({
-          products: [],
+          products: [], 
           totalPrice: 0,
         })
       );

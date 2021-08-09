@@ -13,12 +13,16 @@ import { CircularProgress } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: "100%"
+    width: "100%",
+    marginTop:'20px',
+    
   },
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: "80%",
+    border:'2px solid #e57373',
+    borderRadius:'10px'
   },
   image: {
     // height: "50%",
@@ -86,7 +90,7 @@ const ProductDetails = () => {
                 </Grid>
               </Grid>
               <Grid item>
-                <Typography variant="subtitle1">{productDetails.price}$</Typography>
+                <Typography style={{color:'#f44336'}} variant="subtitle1">{productDetails.price}$</Typography>
               </Grid>
             </Grid>
           </Grid>

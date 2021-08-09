@@ -12,7 +12,7 @@ import {
     Typography,
   } from "@material-ui/core";
   import React from "react";
-  import { makeStyles } from "@material-ui/core/styles";
+  import { makeStyles, alpha } from "@material-ui/core/styles";
   import { useProducts } from "../../contexts/ProductContext";
   import { useState } from "react";
   import HomeIcon from '@material-ui/icons/Home';
@@ -27,16 +27,32 @@ import { Link } from "react-router-dom";
       margin:'0 20px 20px 20px',
       minWidth: "170px",
       maxWidth: "300px",
-      height: '120%',
+      height: '100%',
       minHeight:'250px',
+      backgroundColor:'#ffab91',
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+    color: 'white',
 
     },
     typographys:{
-      margin:'50px 0',
-      position:'relative',
+      margin:'20px 0',  
+    color: 'white',
       
   },
+  pages:{
+    borderRadius: theme.shape.borderRadius,
+    position:'reletive',
+    display:'flex',
+    alignItem:'flex-start',
+    justifyContent:"space-around",
+    border:'2px solid white',
+    borderRadius:'100px',
+    margin:'10px 0',
+  },
+  pagesIcon:{
+  //  marginTop:'2px'
+
+  }
   }));
   
   const SideBar = () => {
@@ -90,15 +106,35 @@ import { Link } from "react-router-dom";
     }
   
     return (
-      <Grid item md={3} >
+      <Grid item md={3}  >
         <Paper elevation={2} className={classes.paper}>
-          <Container style={{position:'fixed', width:'250px'}}>
+          <Container style={{position:'fixed', width:'15%',  marginTop:'7px',marginLeft:'20px', border:"3px solid white",borderRadius:'10px'}}>
           <FormControl component="fieldset">
             <Container className={classes.typographys}>
-            <Link to='/' style ={{textDecoration: 'none', color:'black'}}> <Typography variant = 'h6'><HomeIcon/> Home</Typography></Link>
-            <Link to='/aboutus' style ={{textDecoration: 'none', color:'black'}}> <Typography variant = 'h6'><SupervisorAccountIcon/>About Us</Typography></Link>
-            <Link to='/profile' style ={{textDecoration: 'none', color:'black'}}> <Typography variant = 'h6'><PersonIcon/>Profile</Typography></Link>
-            <Link to='/contacts' style ={{textDecoration: 'none', color:'black'}}> <Typography variant = 'h6'><ContactSupportIcon/>Contacts</Typography></Link>
+            <Link to='/' style ={{textDecoration: 'none', color:'black'}}>
+              <div className={classes.pages}>
+              <div className={classes.pagesIcon}> 
+              <HomeIcon/>
+              </div>
+              <Typography variant = 'h6'>Home</Typography>
+              </div>
+            </Link>
+            <Link to='/aboutus' style ={{textDecoration: 'none', color:'black'}}>
+              <div className={classes.pages}>
+              <SupervisorAccountIcon/><Typography variant = 'h6'>About Us</Typography>
+              </div>
+            </Link>
+            <Link to='/profile' style ={{textDecoration: 'none', color:'black'}}>
+              <div className={classes.pages}>
+              <PersonIcon/>
+              <Typography variant = 'h6'>Profile</Typography>
+              </div>
+            </Link>
+            <Link to='/contacts' style ={{textDecoration: 'none', color:'black'}}>
+              <div className={classes.pages}>
+              <ContactSupportIcon/><Typography variant = 'h6'>Contacts</Typography>
+              </div>
+            </Link>
             </Container>
            
             <RadioGroup value={type} onChange={handleChangeType} style={{color:'secondary'}} >
@@ -133,11 +169,11 @@ import { Link } from "react-router-dom";
             onChange={handleChangePrice}
             aria-labelledby="discrete-slider"
             valueLabelDisplay="auto"
-            style={{color:'#e91e63'}}
+            style={{color:'#d84315'}}
             min={0}
             max={1000}
             />
-            <Button onClick={resetPrice} variant="outlined" color="secondary">Reset price</Button>
+            <button onClick={resetPrice} variant="outlined" style={{color: "white", border: '2px solid white', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
           </Grid>
           </Container>
         </Paper>

@@ -33,9 +33,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const handleClick = () => {
-
-}
 
 const EditProductPage = () => {
   const { id } = useParams()

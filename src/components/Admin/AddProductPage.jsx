@@ -41,7 +41,7 @@ const AddProductPage = () => {
 
   const handleClick = async (product) => {
     const data = await addProduct(product)
-    history.push('/')
+    history.push('/home')
   }
   
   const [product, setProduct] = useState({
@@ -106,7 +106,7 @@ const AddProductPage = () => {
             <Button onClick={() => handleClick(product)}>
               <SaveIcon />
             </Button>
-            <Button onClick={() => history.push('/')}>
+            <Button onClick={() => history.push('/home')}>
               <CancelIcon />
             </Button>
           </Container>
