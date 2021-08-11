@@ -12,6 +12,7 @@ import Registration from '../components/Auth/Registration';
 import Main from '../components/Home/Main';
 import AboutUs from '../components/Home/AboutUs';
 import Profile from '../components/Home/Profile';
+import Footer from '../components/Footer/Footer';
 
 const Routes = () => {
   return (
@@ -30,6 +31,7 @@ const Routes = () => {
           <Route exact path='/aboutus' component={AboutUs} />
           <Route exact path="/profile" component={Profile} />
         </Switch>
+        <Footer />
       </ProductContextProvider>
     </BrowserRouter>
   );

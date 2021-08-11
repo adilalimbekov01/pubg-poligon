@@ -36,10 +36,13 @@ export default function Cart() {
 
   const handleCountChange = (count, id) => {
     changeProductCount(count, id);
+    if (count < 1) {
+      changeProductCount(count > 1, id);
+    }
   };
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} >
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
           <TableRow>

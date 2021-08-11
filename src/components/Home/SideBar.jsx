@@ -110,7 +110,7 @@ import { Link } from "react-router-dom";
       <Grid item md={3}  >
         {/* <Paper elevation={2} className={classes.paper}> */}
     
-          <Container style={{boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',position:'fixed', width:'15%',  marginTop:'7px',marginLeft:'20px', border:"3px solid #ffab91",borderRadius:'10px'}}>
+          <Container style={{boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',position:'fixed', width:'15%',  marginTop:'7px',marginLeft:'20px', border:"3px solid #ffab91",borderRadius:'10px', }}>
           <FormControl component="fieldset">
             <Container className={classes.typographys}>
             <Link to='/' style ={{textDecoration: 'none', color:'black'}}>
@@ -175,7 +175,7 @@ import { Link } from "react-router-dom";
             min={250}
             max={999}
             />
-            <button onClick={resetPrice} variant="outlined" style={{color: "white", border: '2px solid white', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
+            <button onClick={resetPrice} variant="outlined" style={{color: "#d84315", border: '2px solid #d84315', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
           </Grid>
           </Container>
         {/* </Paper> */}
