@@ -47,9 +47,9 @@ import NavBar from './NavBar';
       },
   }));
   
-const Main = () => {
+const Main = ({item}) => {
     const classes = useStyles();
-    const { getProductsData, history } = useProducts()
+    const { getProductsData, history, productsData } = useProducts()
     const [type, setType] = useState(getType())
     const [price, setPrice] = useState(getPrice())
   
@@ -106,6 +106,7 @@ const Main = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+  
   
     return (
         <Grid container  spacing-md={4} spacing-sm={3} className={classes.booter}>
