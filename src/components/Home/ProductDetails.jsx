@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, Container } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -97,8 +97,10 @@ const ProductDetails = () => {
         </Paper>
       </div>
     :
+    <Container>
     <CircularProgress />
-    }
+    </Container>
+}
     </>
   );
 };

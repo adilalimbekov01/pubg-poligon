@@ -7,7 +7,7 @@ import SideBar from './SideBar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-  backgroundColor:'#ffccbc',
+  
   paddingTop: 20,
   paddingBottom: 100,
   },

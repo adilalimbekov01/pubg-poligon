@@ -40,13 +40,15 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
       textDecoration:'none'
     },
+    fontWeight:'bold'
   },
   search: {
     position: 'relative',
+    color:'black',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 0.35),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.common.white, 0.55),
     },
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -54,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
       width: '500px',
       
     },
+    border:"1px solid black",
+    borderRadius:'15px'
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -65,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'black',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -180,9 +184,9 @@ const Header = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{backgroundColor:'#ffab91'}}>
+      <AppBar position="static" style={{backgroundImage:"url(https://image.shutterstock.com/image-vector/legs-trendy-socks-variety-female-260nw-1681011220.jpg)"}}>
         <Toolbar>
-          <Link to="/home" style ={{textDecoration: 'none', color:'white'}}>
+          <Link to="/home" style ={{textDecoration: 'none', color:'black'}}>
             <Typography className={classes.title} variant="h6" noWrap>
               The Sock Of Fate
             </Typography>
@@ -203,7 +207,7 @@ const Header = () => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Link to="/cart" style ={{textDecoration: 'none', color:'white'}}>
+            <Link to="/cart" style ={{textDecoration: 'none', color:'black'}}>
               <IconButton aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={cart.products ? cart.products.length : 0} color="secondary">
                   <ShoppingCart />
@@ -215,7 +219,7 @@ const Header = () => {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <AddCircleIcon />
+              <AddCircleIcon style={{color:'black'}}/>
             </IconButton>
             <IconButton
               edge="end"
@@ -225,7 +229,7 @@ const Header = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle style={{color:'black'}}/>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

@@ -29,9 +29,8 @@ import { Link } from "react-router-dom";
       maxWidth: "300px",
       height: '100%',
       minHeight:'250px',
-      backgroundColor:'#ffab91',
-    boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-    color: 'white',
+      // backgroundColor:'#ffab91',
+    color: 'black',
 
     },
     typographys:{
@@ -45,9 +44,11 @@ import { Link } from "react-router-dom";
     display:'flex',
     alignItem:'flex-start',
     justifyContent:"space-around",
-    border:'2px solid white',
+    border:'2px solid #ffab91',
     borderRadius:'100px',
     margin:'10px 0',
+    // backgroundColor:'#ff5722',
+    color:'black'
   },
   pagesIcon:{
   //  marginTop:'2px'
@@ -107,8 +108,9 @@ import { Link } from "react-router-dom";
   
     return (
       <Grid item md={3}  >
-        <Paper elevation={2} className={classes.paper}>
-          <Container style={{position:'fixed', width:'15%',  marginTop:'7px',marginLeft:'20px', border:"3px solid white",borderRadius:'10px'}}>
+        {/* <Paper elevation={2} className={classes.paper}> */}
+    
+          <Container style={{boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',position:'fixed', width:'15%',  marginTop:'7px',marginLeft:'20px', border:"3px solid #ffab91",borderRadius:'10px'}}>
           <FormControl component="fieldset">
             <Container className={classes.typographys}>
             <Link to='/' style ={{textDecoration: 'none', color:'black'}}>
@@ -170,13 +172,13 @@ import { Link } from "react-router-dom";
             aria-labelledby="discrete-slider"
             valueLabelDisplay="auto"
             style={{color:'#d84315'}}
-            min={0}
-            max={1000}
+            min={250}
+            max={999}
             />
             <button onClick={resetPrice} variant="outlined" style={{color: "white", border: '2px solid white', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
           </Grid>
           </Container>
-        </Paper>
+        {/* </Paper> */}
       </Grid>
     );
   };
