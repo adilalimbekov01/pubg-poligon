@@ -58,7 +58,7 @@ const ProductCard = ({ item }) => {
   };
 
   const checkItemInCart = (id) => {
-    const foundItem = cart.products.find((product) => product.item.id === id);
+    const foundItem = cart?.products?.find((product) => product.item.id === id);
     return foundItem ? 'secondary' : 'default';
   };
 

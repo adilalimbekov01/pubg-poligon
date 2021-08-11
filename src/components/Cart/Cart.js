@@ -43,11 +43,11 @@ export default function Cart() {
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
           <TableRow>
-            <TableCell>Image</TableCell>
-            <TableCell align="right">Title</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Count</TableCell>
-            <TableCell align="right">SubPrice</TableCell>
+            <TableCell style={{ fontWeight: "bold" }}>IMG</TableCell>
+            <TableCell align="right" style={{ fontWeight: "bold" }}>TITLE</TableCell>
+            <TableCell align="right" style={{ fontWeight: "bold" }}>PRICE</TableCell>
+            <TableCell align="right" style={{ fontWeight: "bold" }}>COUNT</TableCell>
+            <TableCell align="right" style={{ fontWeight: "bold" }}>SUBPRICE</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -73,7 +73,7 @@ export default function Cart() {
           <TableRow>
             <TableCell rowSpan={3} />
             <TableCell colSpan={2}>
-              <Typography variant="h5">Total:</Typography>
+              <Typography variant="h5" style={{ fontWeight: "bold" }}>Total:</Typography>
             </TableCell>
             <TableCell align="right">
               <Typography variant="h5">{cart.totalPrice}</Typography>
