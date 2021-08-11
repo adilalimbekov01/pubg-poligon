@@ -92,6 +92,7 @@ const Main = () => {
       }
       </AutoPlaySwipeableViews>
       </div>
+      
     </Grid>
   );
 };
