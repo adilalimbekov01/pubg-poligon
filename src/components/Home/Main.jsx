@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
@@ -8,7 +7,6 @@ import NavBar from './NavBar'
 import { Container, Grid } from '@material-ui/core';
 import { useProducts } from '../../contexts/ProductContext';
 import { Link } from 'react-router-dom';
-import AboutUs from './AboutUs';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -76,8 +74,6 @@ const useStyles = makeStyles((theme) => ({
   search:{
     display:'none'
   },
-  
-
 }));
 
  
@@ -88,12 +84,9 @@ const Main = () => {
   const { productsData, getProductsData } = useProducts()
   const maxSteps = productsData.length;
 
-
-
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
-  
 
   return (
     <> 
