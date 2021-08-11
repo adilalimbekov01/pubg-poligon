@@ -11,6 +11,7 @@ function Alert(props) {
 
 const Login = () => {
   const [newUser, setNewUser] = useState({});
+
   const history = useHistory();
   const { loginUser, user, loading, errorMessage, clearState } = useAuth();
 
@@ -33,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      history.push('/');
+      history.push('/profile');
     }
 
     return () => {
@@ -51,17 +52,31 @@ const Login = () => {
             </Typography>
             {errorMessage ? <Alert severity="error">{errorMessage}</Alert> : null}
           </div>
+
           <Grid>
             <TextField
               onChange={(e) => handleChange(e)}
               name="email"
               variant="outlined"
+              type="email"
               required
               label="Email Address"
             />
-            <TextField onChange={(e) => handleChange(e)} name="password" variant="outlined" required label="Password" />
-            <TextField variant="outlined" required label="Password again" />
+            <TextField 
+              onChange={(e) => handleChange(e)} 
+              name="password" 
+              variant="outlined"
+              type="password" 
+              required 
+              label="Password" />
+            <TextField
+              name="confirmPassword"
+              variant="outlined"
+              type="password"
+              required 
+              label="Password again" />
           </Grid>
+
           <Button variant="contained" color="primary" type="submit" disabled={loading}>
             {loading ? <CircularProgress /> : 'Login'}
           </Button>

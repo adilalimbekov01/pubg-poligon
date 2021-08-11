@@ -52,6 +52,16 @@ const Registration = () => {
   //   }
   // }, [user]);
 
+  useEffect(() => {
+    if (user) {
+      history.push('/profile');
+    }
+
+    return () => {
+      clearState();
+    };
+  }, [user]);
+
   return (
     <Container component="main" maxWidth="xs">
       <form action="" onSubmit={signup}>

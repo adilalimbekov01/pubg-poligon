@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
       main: '#f44336',
       dark: '#ba000d',
       contrastText: '#000',
-    
     },
     backgroundColor:'#e64a19'
   },
@@ -138,8 +137,12 @@ const Header = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to="/login" style ={{textDecoration: 'none', color:'black'}}>
+        <MenuItem onClick={handleMenuClose}>Войти</MenuItem>
+      </Link>
+      <Link to="/reg" style={{textDecoration: "none", color:'black'}}>
+        <MenuItem onClick={handleMenuClose}>Зарегистрироваться</MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -188,6 +191,7 @@ const Header = () => {
         <Toolbar>
           <Link to="/home" style ={{textDecoration: 'none', color:'black'}}>
             <Typography className={classes.title} variant="h6" noWrap>
+
               The Sock Of Fate
             </Typography>
           </Link>
@@ -222,6 +226,7 @@ const Header = () => {
               <AddCircleIcon style={{color:'black'}}/>
             </IconButton>
             <IconButton
+    
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -229,7 +234,9 @@ const Header = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
+
               <AccountCircle style={{color:'black'}}/>
+
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
