@@ -13,7 +13,7 @@ const ProductList = () => {
   useEffect(() => {
     console.log(productsData);
   }, [productsData]);
-
+  
   return (
     <Grid container spacing={10} >
       {productsData ? (

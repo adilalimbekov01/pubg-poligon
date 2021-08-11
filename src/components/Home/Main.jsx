@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, useTheme} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -6,39 +6,10 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import NavBar from './NavBar'
 import { Grid } from '@material-ui/core';
-import { JSON_API_PRODUCTS } from '../../helpers/consts'
-import axios from 'axios';
+import { useProducts } from '../../contexts/ProductContext';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-
-const tutorialSteps = [
-  {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
-  },
-  {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop:'20px'
   },
   img: {
-    height: 255,
+    height: '350px',
     display: 'block',
-    maxWidth: 400,
+    maxWidth: "100%",
     overflow: 'hidden',
     width: '100%',
   },
@@ -65,44 +36,60 @@ const useStyles = makeStyles((theme) => ({
     width:'100%'
   },
   carusel:{
-    width:'700px'
+    width:'60%',
+    marginTop:'20px',
+    margin :'0 auto'
   },
+  blockCar:{
+    border: "2px solid white",
+    borderRadius:'15px',
+    backgroundColor:'#ffab91',
+    color:'white'
+  }
 
 }));
 
  
-
-
 const Main = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
+  const [activeStep, setActiveStep] = useState(0);
+  const { productsData, getProductsData } = useProducts()
+  const maxSteps = productsData.length;
+
+  useEffect(() => {
+    getProductsData();
+  }, []);
+
+  useEffect(() => {
+    console.log(productsData);
+  }, [productsData]);
 
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
+  console.log(productsData);
 
   return (
     <Grid container  spacing-md={4} spacing-sm={3} className={classes.boot}>
     <NavBar/>
     <div className={classes.carusel}>
-    <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
-      </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {tutorialSteps.map((step, index) => (
-          <div key={step.label}>
+        {productsData ? (productsData.map((step, index) => (
+          <div key={step.title} className={classes.blockCar}>
+            <Typography variant='h4' style={{textAlign:'center'}}>{step.title}</Typography>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.imgPath} alt={step.label} />
+              
+              <img className={classes.img} src={step.image} alt={step.title} />
             ) : null}
           </div>
-        ))}
+         ))): <Typography>Loading...</Typography>
+      }
       </AutoPlaySwipeableViews>
       </div>
     </Grid>
