@@ -57,7 +57,6 @@
       <div style={{width:'100%', display:'flex', justifyContent:'space-around'}}>
       <Link to="/home" style={{textDecoration:'none'}}>   <div className={classes.pages}>List</div></Link>
       <Link to="/aboutus" style={{textDecoration:'none'}}>   <div className={classes.pages}>About Us</div></Link>
-      <Link to="/reg" style={{textDecoration:'none'}}>   <div className={classes.pages}>Profile</div></Link>
       <Link to="/Contacts" style={{textDecoration:'none'}}>   <div className={classes.pages}>Contacts</div></Link>
      </div>
     );

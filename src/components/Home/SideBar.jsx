@@ -126,12 +126,6 @@ import { Link } from "react-router-dom";
               <SupervisorAccountIcon/><Typography variant = 'h6'>About Us</Typography>
               </div>
             </Link>
-            <Link to='/reg' style ={{textDecoration: 'none', color:'black'}}>
-              <div className={classes.pages}>
-              <PersonIcon/>
-              <Typography variant = 'h6'>Profile</Typography>
-              </div>
-            </Link>
             <Link to='/contacts' style ={{textDecoration: 'none', color:'black'}}>
               <div className={classes.pages}>
               <ContactSupportIcon/><Typography variant = 'h6'>Contacts</Typography>

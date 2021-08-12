@@ -15,6 +15,7 @@ export const calcTotalPrice = (products) => {
   }, 0);
 };
 
+
 export const getCurrentPage = () => {
   const search = new URLSearchParams(window.location.search);
 

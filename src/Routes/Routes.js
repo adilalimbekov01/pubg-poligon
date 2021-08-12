@@ -11,8 +11,9 @@ import Login from '../components/Auth/Login';
 import Registration from '../components/Auth/Registration';
 import Main from '../components/Home/Main';
 import AboutUs from '../components/Home/AboutUs';
-import Profile from '../components/Home/Profile';
+import Contacts from '../components/Home/Contacts';
 import Footer from '../components/Footer/Footer';
+import ProductList from '../components/Home/ProductList';
 
 const Routes = () => {
   return (
@@ -29,7 +30,8 @@ const Routes = () => {
           <Route exact path="/details/:id" component={ProductDetails} />
           <Route exact path="/edit/:id" component={EditProductPage} />
           <Route exact path='/aboutus' component={AboutUs} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/contacts" component={Contacts} />
+          <Route exact path="/list" component={ProductList} />
         </Switch>
         <Footer />
       </ProductContextProvider>

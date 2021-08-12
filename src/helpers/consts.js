@@ -14,4 +14,4 @@ export const ACTIONS = {
   AUTH_LOGOUT: 'AUTH_LOGOUT',
 };
 
-export const PRODUCT_LIMIT = 3;
+export const PRODUCT_LIMIT = 6;

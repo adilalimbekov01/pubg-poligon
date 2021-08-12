@@ -34,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      history.push('/profile');
+      history.push('/home');
     }
 
     return () => {
