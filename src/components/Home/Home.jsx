@@ -29,7 +29,7 @@ const Home = () => {
     <div className={classes.root}>
       <Grid container  spacing-md={4} spacing-sm={3} className={classes.boot}>
         <SideBar />
-        <ProductList />
+        <ProductList/>
       </Grid>
     </div>
   );

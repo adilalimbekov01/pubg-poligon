@@ -58,7 +58,6 @@ import React from "react";
       <Link to="/aboutus" style={{textDecoration:'none'}}>   <div className={classes.pages}>About Us</div></Link>
       <Link to="/home" style={{textDecoration:'none'}}>   <div className={classes.pages}>Socks</div></Link>
       <Link to="/contacts" style={{textDecoration:'none'}}>   <div className={classes.pages}>Contacts</div></Link>
-
      </div>
     );
   };

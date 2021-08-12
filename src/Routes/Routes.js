@@ -13,6 +13,7 @@ import Main from '../components/Home/Main';
 import AboutUs from '../components/Home/AboutUs';
 import Contacts from '../components/Home/Contacts';
 import Footer from '../components/Footer/Footer';
+import ProductList from '../components/Home/ProductList';
 
 const Routes = () => {
   return (

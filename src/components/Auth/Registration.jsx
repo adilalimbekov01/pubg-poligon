@@ -43,7 +43,7 @@ const Registration = () => {
 
   useEffect(() => {
     if (user) {
-      history.push('/profile');
+      history.push('/');
     }
 
     return () => {

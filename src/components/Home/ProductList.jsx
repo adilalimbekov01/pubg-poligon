@@ -4,25 +4,33 @@ import { Pagination } from '@material-ui/lab';
 import axios from 'axios';
 import { useProducts } from '../../contexts/ProductContext';
 import ProductCard from './ProductCard';
+import { getCurrentPage } from '../../helpers/functions';
 
 const ProductList = () => {
-  const { productsData, getProductsData } = useProducts();
+  const { productsData, getProductsData,pages, history } = useProducts();
+  const [page, setPage] = useState(getCurrentPage());
   useEffect(() => {
     getProductsData();
   }, []);
 
 
-  const [page, setPage] = useState(1)
-    const [posts, setPosts] = useState([])
-    const loadPosts = async() => {
-        const res = await axios.get(`http://localhost:8000/products?_page=${page}`)
-        setPosts(res.data)
-    }
+    // const [posts, setPosts] = useState([])
+    // const loadPosts = async() => {
+    //     const res = await axios.get(`http://localhost:8000/products?_page=${page}`)
+    //     setPosts(res.data)
+    // }
     
-    useEffect(()=>{
-        loadPosts()
-    }, [page])
+    // useEffect(()=>{ 
+    //     loadPosts()
+    // }, [page])
 
+    const handlePage = (e, page) => {
+        const search = new URLSearchParams(window.location.search);
+        search.set('_page', page);
+        history.push(`${history.location.pathname}?${search.toString()}`);
+        getProductsData();
+        setPage(page);
+      };
   // ======================================================
   // const [products, setProducts] = useState([])
   // const [loading, setLoading] = useState(false)
@@ -59,7 +67,7 @@ const ProductList = () => {
           <h1>...loading</h1>
         </>
       )},
-      <Container component={Box} py={3}>
+      {/* <Container component={Box} py={3}>
                 <Pagination 
                     count={5} 
                     variant="outlined" 
@@ -72,7 +80,16 @@ const ProductList = () => {
                     showLastButton={true}
                     onChange={(e, val) => setPage(val)}
                     />
-      </Container>
+      </Container> */}
+      <Grid>
+      <div style={{ margin: '20px auto' }}>
+        <Pagination 
+        count={pages} 
+        page={+page} 
+        onChange={handlePage}
+        />
+      </div>
+        </Grid>
     </Grid>
   );
 };
