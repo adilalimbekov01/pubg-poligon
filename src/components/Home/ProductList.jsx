@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useProducts } from '../../contexts/ProductContext';
 import ProductCard from './ProductCard';
 
-
 const ProductList = () => {
   const { productsData, getProductsData } = useProducts();
   useEffect(() => {
