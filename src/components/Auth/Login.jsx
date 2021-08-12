@@ -55,7 +55,7 @@ const Login = () => {
 
           <Grid>
             <TextField
-            style={{margin:'20px 0 '}}
+             style={{margin:'20px 0 '}}
               onChange={(e) => handleChange(e)}
               name="email"
               variant="outlined"
@@ -63,21 +63,21 @@ const Login = () => {
               required
               label="Email Address"
             />
-            <TextField
-            style={{margin:'20px 0 '}} 
-              onChange={(e) => handleChange(e)} 
-              name="password" 
-              variant="outlined"
-              type="password" 
-              required 
-              label="Password" />
+            <TextField 
+            style={{margin:'20px 0 '}}  
+            onChange={(e) => handleChange(e)} 
+            name="password" 
+            variant="outlined" 
+             type="password" 
+            required 
+            label="Password" />
             <TextField
             style={{margin:'20px 0 '}}
               name="confirmPassword"
-              variant="outlined"
-              type="password"
-              required 
-              label="Password again" />
+             variant="outlined" 
+             type="password"
+             required 
+             label="Password again" />
           </Grid>
 
           <Button variant="contained" color="primary" type="submit" disabled={loading} style={{margin:'0 auto 10px'}}>

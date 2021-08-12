@@ -67,12 +67,8 @@ export default function Cart() {
   };
 
   return (
-<<<<<<< HEAD
-    <>
+    <div style={{flex: '1 0 auto'}}>
     <TableContainer component={Paper}>
-=======
-    <TableContainer component={Paper} >
->>>>>>> 79a2e644459289a4ffff682bc530fd91271f841c
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
           <TableRow>
@@ -136,6 +132,6 @@ export default function Cart() {
   </div>
 </Modal>: null}
     
-    </>
+    </div>
   );
 }

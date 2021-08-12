@@ -12,6 +12,7 @@ import Registration from '../components/Auth/Registration';
 import Main from '../components/Home/Main';
 import AboutUs from '../components/Home/AboutUs';
 import Contacts from '../components/Home/Contacts';
+import Footer from '../components/Footer/Footer';
 
 const Routes = () => {
   return (

@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
 
-            <div style={{backgroundColor:"#ffab91", display:'flex', justifyContent:'space-around',marginBottom:0 }}>
+            <div style={{backgroundColor:"#ffab91", display:'flex', justifyContent:'space-around',marginBottom:0,flex: '0 0 auto', paddinTop: 10 }}>
                 <div style={{width:'300px', marginTop:'30px'}}>
                     <div style={{display:'flex', alignItems:'center'}}>
                         <img width="30px" height="30px" style={{margin:'0 20px'}} src="https://image.flaticon.com/icons/png/128/684/684809.png" alt="" />

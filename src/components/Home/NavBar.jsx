@@ -56,7 +56,7 @@ import React from "react";
     return (
       <div style={{width:'100%', display:'flex', justifyContent:'space-around'}}>
       <Link to="/aboutus" style={{textDecoration:'none'}}>   <div className={classes.pages}>About Us</div></Link>
-      <Link to="/home" style={{textDecoration:'none'}}>   <div className={classes.pages}>List</div></Link>
+      <Link to="/home" style={{textDecoration:'none'}}>   <div className={classes.pages}>Socks</div></Link>
       <Link to="/contacts" style={{textDecoration:'none'}}>   <div className={classes.pages}>Contacts</div></Link>
 
      </div>
