@@ -13,8 +13,6 @@ import Main from '../components/Home/Main';
 import AboutUs from '../components/Home/AboutUs';
 import Contacts from '../components/Home/Contacts';
 
-
-
 const Routes = () => {
   return (
     <BrowserRouter>
@@ -32,6 +30,7 @@ const Routes = () => {
           <Route exact path='/aboutus' component={AboutUs} />
           <Route exact path="/contacts" component={Contacts} />
         </Switch>
+        <Footer />
       </ProductContextProvider>
     </BrowserRouter>
   );
