@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import NavBar from './NavBar';
 import { makeStyles } from '@material-ui/core';

@@ -1,4 +1,4 @@
-  import React from "react";
+import React from "react";
   import { makeStyles } from "@material-ui/core/styles";
   import { useProducts } from "../../contexts/ProductContext";
   import { useState } from "react";
@@ -34,7 +34,7 @@
     width:'100px',
     marginTop:'20px',
     
-  }
+  }, 
   }));
   
   const NavBar = () => {
@@ -55,10 +55,9 @@
   
     return (
       <div style={{width:'100%', display:'flex', justifyContent:'space-around'}}>
-      <Link to="/home" style={{textDecoration:'none'}}>   <div className={classes.pages}>List</div></Link>
       <Link to="/aboutus" style={{textDecoration:'none'}}>   <div className={classes.pages}>About Us</div></Link>
-      <Link to="/profile" style={{textDecoration:'none'}}>   <div className={classes.pages}>Profile</div></Link>
-      <Link to="/Contacts" style={{textDecoration:'none'}}>   <div className={classes.pages}>Contacts</div></Link>
+      <Link to="/home" style={{textDecoration:'none'}}>   <div className={classes.pages}>List</div></Link>
+      <Link to="/contacts" style={{textDecoration:'none'}}>   <div className={classes.pages}>Contacts</div></Link>
      </div>
     );
   };

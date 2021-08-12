@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useProducts } from '../../contexts/ProductContext';
-import { Typography } from '@material-ui/core';
+import { Button, Container, Input, Modal, Typography } from '@material-ui/core';
 import { useState } from 'react';
 
 const useStyles = makeStyles({
@@ -19,12 +19,28 @@ const useStyles = makeStyles({
   tableCellImg: {
     width: 50,
   },
+  paper: {
+    position: 'absolute',
+    width: 500,
+    height:300,
+    backgroundColor:'#ff7043',
+    border: '2px solid #000',
+    borderRadius:'10px',
+    // boxShadow: theme.shadows[5],
+    // padding: theme.spacing(2, 4, 3),
+    marginLeft:'500px',
+    marginTop:'200px',
+    display:"flex",
+    flexDirection:'column',
+    alignItems:'center'
+  },
 });
 
 export default function Cart() {
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const [count, setCount] = useState([]);
-  const { cart, getCart, changeProductCount } = useProducts();
+  const { cart, getCart, changeProductCount, buyProducts } = useProducts();
 
   useEffect(() => {
     getCart();
@@ -38,7 +54,17 @@ export default function Cart() {
     changeProductCount(count, id);
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    buyProducts()
+  };
+
   return (
+    <>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
@@ -82,5 +108,27 @@ export default function Cart() {
         </TableBody>
       </Table>
     </TableContainer>
+    <Container style={{display:'flex', justifyContent:'flex-end'}}>
+    <Button style={{color:'white', backgroundColor:'#ffab91', marginTop:'20px'}} onClick={() => handleOpen()}>Buy</Button>
+    </Container>
+              {open == true ? <Modal
+  disablePortal
+  disableEnforceFocus
+  disableAutoFocus
+  open
+  aria-labelledby="server-modal-title"
+  aria-describedby="server-modal-description"
+  className={classes.modal}
+>
+  <div className={classes.paper}>
+    <h2 id="server-modal-title">Подтверждение покупки</h2>
+    <Input placeholder="Введите ваш телефон" style={{marginBottom:'20px'}}/>
+    <Input placeholder="Введите ваш адрес" style={{marginBottom:'20px'}}/>
+    <Input placeholder="Введите способ оплаты"/>
+    <Button style={{color:'white', backgroundColor:'#ffab91', marginTop:'40px'}} onClick={() => handleClose()}>Buy</Button>
+  </div>
+</Modal>: null}
+    
+    </>
   );
 }

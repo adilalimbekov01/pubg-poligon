@@ -1,40 +1,34 @@
 import {
     Radio,
     FormControl,
-    FormLabel,
     Grid,
-    Paper,
     RadioGroup,
     FormControlLabel,
-    Button,
     Slider,
     Container,
     Typography,
   } from "@material-ui/core";
   import React from "react";
-  import { makeStyles, alpha } from "@material-ui/core/styles";
+  import { makeStyles } from "@material-ui/core/styles";
   import { useProducts } from "../../contexts/ProductContext";
   import { useState } from "react";
   import HomeIcon from '@material-ui/icons/Home';
   import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-  import PersonIcon from '@material-ui/icons/Person';
+  import StarIcon from '@material-ui/icons/Star';
   import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import { Link } from "react-router-dom";
   
   const useStyles = makeStyles((theme) => ({
     paper: {
-      
       margin:'0 20px 20px 20px',
       minWidth: "170px",
       maxWidth: "300px",
       height: '100%',
       minHeight:'250px',
-      // backgroundColor:'#ffab91',
-    color: 'black',
-
+      color: 'black',
     },
     typographys:{
-      margin:'20px 0',  
+      marginTop:'20px',  
     color: 'white',
       
   },
@@ -47,13 +41,8 @@ import { Link } from "react-router-dom";
     border:'2px solid #ffab91',
     borderRadius:'100px',
     margin:'10px 0',
-    // backgroundColor:'#ff5722',
     color:'black'
   },
-  pagesIcon:{
-  //  marginTop:'2px'
-
-  }
   }));
   
   const SideBar = () => {
@@ -110,7 +99,7 @@ import { Link } from "react-router-dom";
       <Grid item md={3}  >
         {/* <Paper elevation={2} className={classes.paper}> */}
     
-          <Container style={{boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',position:'fixed', width:'15%',  marginTop:'7px',marginLeft:'20px', border:"3px solid #ffab91",borderRadius:'10px'}}>
+          <Container style={{boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',position:'fixed', width:'16%',  marginTop:'7px',marginLeft:'20px', border:"3px solid #ffab91",borderRadius:'10px', textAlign:'center', display: 'flex', flexDirection:'column', alignItems:'center'}}>
           <FormControl component="fieldset">
             <Container className={classes.typographys}>
             <Link to='/' style ={{textDecoration: 'none', color:'black'}}>
@@ -124,12 +113,6 @@ import { Link } from "react-router-dom";
             <Link to='/aboutus' style ={{textDecoration: 'none', color:'black'}}>
               <div className={classes.pages}>
               <SupervisorAccountIcon/><Typography variant = 'h6'>About Us</Typography>
-              </div>
-            </Link>
-            <Link to='/profile' style ={{textDecoration: 'none', color:'black'}}>
-              <div className={classes.pages}>
-              <PersonIcon/>
-              <Typography variant = 'h6'>Profile</Typography>
               </div>
             </Link>
             <Link to='/contacts' style ={{textDecoration: 'none', color:'black'}}>
@@ -175,7 +158,7 @@ import { Link } from "react-router-dom";
             min={250}
             max={999}
             />
-            <button onClick={resetPrice} variant="outlined" style={{color: "white", border: '2px solid white', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
+            <button onClick={resetPrice} variant="outlined" style={{color: "#d84315", border: '2px solid #d84315', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
           </Grid>
           </Container>
         {/* </Paper> */}

@@ -87,6 +87,9 @@ const ProductContextProvider = ({ children }) => {
     });
   };
 
+  const buyProducts = () =>{
+    localStorage.clear()
+  }
   const addProductToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem('cart'));
     if (!cart) {
@@ -116,7 +119,6 @@ const ProductContextProvider = ({ children }) => {
       payload: cart,
     });
   };
-
   const changeProductCount = (count, id) => {
     let cart = JSON.parse(localStorage.getItem('cart'));
     cart.products = cart.products.map((product) => {
@@ -147,6 +149,7 @@ const ProductContextProvider = ({ children }) => {
     getCart,
     addProductToCart,
     changeProductCount,
+    buyProducts,
   };
 
   return <productContext.Provider value={values}>{children}</productContext.Provider>;

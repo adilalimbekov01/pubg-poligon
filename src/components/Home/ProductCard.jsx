@@ -14,11 +14,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { useProducts } from '../../contexts/ProductContext';
 import EditIcon from '@material-ui/icons/Edit';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import StarIcon from '@material-ui/icons/Star';
+
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 320,
+    width: 340,
     height: 450,
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
     borderRadius:'15px',
@@ -45,13 +47,13 @@ const useStyles = makeStyles((theme) => ({
   icons:{
     display:'flex',
     justifyContent: 'space-around',
-    height: 50
+    height: 50,
   }
 }));
 
 const ProductCard = ({ item }) => {
   const classes = useStyles();
-  const { deleteProduct, history, addProductToCart, cart } = useProducts();
+  const { deleteProduct, history, addProductToCart, cart, addProductToFavorites } = useProducts();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -61,6 +63,10 @@ const ProductCard = ({ item }) => {
   const checkItemInCart = (id) => {
     const foundItem = cart?.products?.find((product) => product.item.id === id);
     return foundItem ? 'secondary' : 'default';
+  };
+  const checkItemInFav = (id) => {
+    const foundItem = cart?.products?.find((product) => product.item.id === id);
+    return foundItem ? 'yellow' : 'default';
   };
 
   return (
@@ -85,6 +91,12 @@ const ProductCard = ({ item }) => {
           </Box>
         </Container>
         <Container className={classes.icons}>
+          <IconButton
+          onClick={()=> addProductToFavorites(item)}
+          color={checkItemInFav(item.id)}>
+          
+            <StarIcon/>
+          </IconButton>
           <IconButton
             color={checkItemInCart(item.id)}
             onClick={() => addProductToCart(item)}

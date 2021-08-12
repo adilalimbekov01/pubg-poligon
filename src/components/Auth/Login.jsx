@@ -34,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      history.push('/profile');
+      history.push('/home');
     }
 
     return () => {
@@ -43,11 +43,11 @@ const Login = () => {
   }, [user]);
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" style={{border:'1px solid black', marginTop:'30px', textAlign:'center', borderRadius:'15px'}}>
       <form action="" onSubmit={signin}>
         <Grid container>
           <div>
-            <Typography component="h1" variant="h5">
+            <Typography variant="h5" style={{marginTop:'30px'}}>
               Login
             </Typography>
             {errorMessage ? <Alert severity="error">{errorMessage}</Alert> : null}
@@ -55,6 +55,7 @@ const Login = () => {
 
           <Grid>
             <TextField
+            style={{margin:'20px 0 '}}
               onChange={(e) => handleChange(e)}
               name="email"
               variant="outlined"
@@ -62,7 +63,8 @@ const Login = () => {
               required
               label="Email Address"
             />
-            <TextField 
+            <TextField
+            style={{margin:'20px 0 '}} 
               onChange={(e) => handleChange(e)} 
               name="password" 
               variant="outlined"
@@ -70,6 +72,7 @@ const Login = () => {
               required 
               label="Password" />
             <TextField
+            style={{margin:'20px 0 '}}
               name="confirmPassword"
               variant="outlined"
               type="password"
@@ -77,7 +80,7 @@ const Login = () => {
               label="Password again" />
           </Grid>
 
-          <Button variant="contained" color="primary" type="submit" disabled={loading}>
+          <Button variant="contained" color="primary" type="submit" disabled={loading} style={{margin:'0 auto 10px'}}>
             {loading ? <CircularProgress /> : 'Login'}
           </Button>
         </Grid>
