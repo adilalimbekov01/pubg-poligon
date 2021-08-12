@@ -81,15 +81,19 @@ const ProductList = () => {
                     onChange={(e, val) => setPage(val)}
                     />
       </Container> */}
-      <Grid>
-      <div style={{ margin: '20px auto' }}>
+      {/* <Grid> */}
+        <Container style={{width:'100%', display:'flex', justifyContent:'center'}}>
+      
         <Pagination 
         count={pages} 
         page={+page} 
         onChange={handlePage}
+        variant="outlined" color="secondary"
+        showFirstButton={true}
+        showLastButton={true}
         />
-      </div>
-        </Grid>
+      </Container>
+        {/* </Grid> */}
     </Grid>
   );
 };
