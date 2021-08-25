@@ -24,7 +24,7 @@ const ProductList = () => {
 
   return (
 
-    <Grid container spacing={10} >
+    <Grid container spacing={8} style={{marginLeft:'60px'}}>
       {productsData ? (
         productsData.map((item) => (
           <Grid item>

@@ -5,24 +5,26 @@ const Footer = () => {
 
     return (
 
-            <div style={{backgroundColor:"#ffab91", display:'flex', justifyContent:'space-around',marginBottom:0,flex: '0 0 auto', paddinTop: 10 }}>
-                <div style={{width:'300px', marginTop:'30px'}}>
-                    <div style={{display:'flex', alignItems:'center'}}>
-                        <img width="30px" height="30px" style={{margin:'0 20px'}} src="https://image.flaticon.com/icons/png/128/684/684809.png" alt="" />
-                        <p>Chyngyz-Aitmatova.pr 45a</p>
-                        </div>
-                    <div style={{display:'flex', alignItems:'center'}}>
-                        <img width="30px" height="30px" style={{margin:'0 20px'}} src="https://image.flaticon.com/icons/png/128/126/126509.png" alt="" />
-                        <p>+996-(706)-070-511</p>
-                        </div>
-                    <div style={{display:'flex', alignItems:'center'}}>
-                        <img width="30px" height="30px" style={{margin:'0 20px'}} src="https://image.flaticon.com/icons/png/128/561/561127.png" alt="" />
-                        <p>adilalimbekov0@gmail.com</p>
-                        </div>
+            <div style={{zIndex:"5", position:'relative',backgroundColor:"#1e2645 ", display:'flex', justifyContent:'space-around',alignItems:'center',marginBottom:0,flex: '0 0 auto', paddinTop: 10, color:'grey', minHeight:"200px" }}>
+                <div style={{width:'300px', display:'flex', flexDirection:'column',}}>
+                    <h4 style={{color:'white'}}>Follow us on</h4>
+                    <div style={{display:'flex',}}>
+                        <a target="_blank" href="https://www.instagram.com/_adil_alimbekov_/">
+                        <img width="50px" height="50px" style={{margin:'0 20px'}} src="https://img.icons8.com/fluency/2x/instagram-new.png" alt="" />
+                        </a>
+                        <a target="_blank" href="https://twitter.com/Midasbuyglobal">
+                        <img width="50px" height="50px" style={{margin:'0 20px'}} src="https://img.icons8.com/color/2x/twitter-squared.png" alt="" />
+                        </a>
+                        <a target="_blank" href="https://www.facebook.com/Midasbuy/">
+                        <img width="50px" height="50px" style={{margin:'0 20px'}} src="https://img.icons8.com/fluency/2x/facebook.png" alt="" />
+                        </a>
+                        <a target="_blank" href="https://www.youtube.com/channel/UCr8Wmg3g9NfWvx7FqMXwxng">
+                        <img width="50px" height="50px" style={{margin:'0 20px'}} src="https://img.icons8.com/color/2x/youtube-play.png" alt="" />
+                        </a>
+                    </div>
                 </div>
-                <div style={{width:'350px'}}>
-                    <h2>About Company</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, voluptate! Minus doloribus nihil beatae, animi eligendi aut mollitia cupiditate minima doloremque pariatur molestiae libero tenetur excepturi impedit dolores exercitationem suscipit.</p>
+                <div style={{width:'350px',}}>
+                <p>For customer service, please contact us via email<br/><a href="/" style={{color:'grey'}}>help@poligon.com</a> or Facebook inbox</p>
                 </div>
             </div>
 

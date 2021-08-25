@@ -6,16 +6,11 @@ import {
     FormControlLabel,
     Slider,
     Container,
-    Typography,
   } from "@material-ui/core";
   import React from "react";
   import { makeStyles } from "@material-ui/core/styles";
   import { useProducts } from "../../contexts/ProductContext";
   import { useState } from "react";
-  import HomeIcon from '@material-ui/icons/Home';
-  import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-  import ContactSupportIcon from '@material-ui/icons/ContactSupport';
-import { Link } from "react-router-dom";
   
   const useStyles = makeStyles((theme) => ({
     paper: {
@@ -96,51 +91,28 @@ import { Link } from "react-router-dom";
   
     return (
       <Grid item md={3}  >
-          <Container style={{boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',position:'fixed', width:'16%',  marginTop:'7px',marginLeft:'20px', border:"3px solid #ffab91",borderRadius:'10px', textAlign:'center', display: 'flex', flexDirection:'column', alignItems:'center'}}>
+          <Container style={{boxShadow:' 0px 0px 30px 10px #141b3d', width:'75%',  marginTop:'7px',borderRadius:'10px', textAlign:'center', display: 'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
 
-          <FormControl component="fieldset">
-            <Container className={classes.typographys}>
-            <Link to='/' style ={{textDecoration: 'none', color:'black'}}>
-              <div className={classes.pages}>
-              <div className={classes.pagesIcon}> 
-              <HomeIcon/>
-              </div>
-              <Typography variant = 'h6'>Home</Typography>
-              </div>
-            </Link>
-            <Link to='/aboutus' style ={{textDecoration: 'none', color:'black'}}>
-              <div className={classes.pages}>
-              <SupervisorAccountIcon/><Typography variant = 'h6'>About Us</Typography>
-              </div>
-            </Link>
-            <Link to='/contacts' style ={{textDecoration: 'none', color:'black'}}>
-              <div className={classes.pages}>
-              <ContactSupportIcon/><Typography variant = 'h6'>Contacts</Typography>
-              </div>
-            </Link>
-            </Container>
-           
+          <FormControl component="fieldset">         
             <RadioGroup value={type} onChange={handleChangeType} style={{color:'secondary'}} >
-              <Container>
+              <Container style={{color:'white', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'space-between', minHeight:'200px', margin:'10px auto'}}>
               <FormControlLabel
-                value="Baby"
+                value="UC"
                 control={<Radio />}
-                label="Baby"
+                label="UC"
+                style={{ borderRadius:'10px', display:'flex', alignItems:'center', width:'110%', backgroundColor:'#252f56', marginTop:"15px"}}
               />
               <FormControlLabel
-                value="Feminine"
+                value="ITEM-RP"
                 control={<Radio />}
-                label="Feminine"
-              />
-              <FormControlLabel
-                value="Male"
-                control={<Radio />}
-                label="Male"
+                label="ITEM-RP"
+                style={{ borderRadius:'10px', display:'flex', alignItems:'center', width:'110%', backgroundColor:'#252f56',}}
               />
               <FormControlLabel
                 value="all"
                 control={<Radio />}
-                label="All socks"
+                label="All Products"
+                style={{ borderRadius:'10px', display:'flex', alignItems:'center', width:'110%', backgroundColor:'#252f56',}}
               />
               </Container>
             </RadioGroup>
@@ -152,11 +124,11 @@ import { Link } from "react-router-dom";
             onChange={handleChangePrice}
             aria-labelledby="discrete-slider"
             valueLabelDisplay="auto"
-            style={{color:'#d84315'}}
-            min={250}
-            max={999}
+            style={{color:'white'}}
+            min={35}
+            max={7490}
             />
-            <button onClick={resetPrice} variant="outlined" style={{color: "#d84315", border: '2px solid #d84315', width:'200px', height:'30px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
+            <button onClick={resetPrice} variant="outlined" style={{color: "white", border: '2px solid white', width:'180px', height:'40px', fontSize:"20px", borderRadius:'10px', marginBottom:"20px",marginLeft:"-14px", backgroundColor:'inherit'}} >Reset price</button>
           </Grid>
           </Container>
       </Grid>

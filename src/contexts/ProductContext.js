@@ -29,6 +29,8 @@ const reducer = (state = INIT_STATE, action) => {
       return { ...state, productDetails: action.payload };
     case ACTIONS.GET_CART:
       return { ...state, cart: action.payload };
+      case ACTIONS.GET_FAVORITES:
+      return { ...state, favorites: action.payload };
     default:
       return state;
   }
@@ -143,11 +145,42 @@ const ProductContextProvider = ({ children }) => {
     });
   };
 
+  const addProductToFavorites = (product) => {
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    if (!favorites) {
+      favorites = {
+        products: [],
+        totalPrice: 0,
+      };
+    }
+    let newProduct = {
+      item: product,
+      count: 1,
+      subPrice: +product.price,
+    };
+
+    console.log(newProduct);
+
+    let productToFind = favorites.products.filter((item) => item.item.id === product.id);
+    if (productToFind.length == 0) {
+      favorites.products.push(newProduct);
+    } else {
+      favorites.products = favorites.products.filter((item) => item.item.id !== product.id);
+    }
+    favorites.totalPrice = calcTotalPrice(favorites.products);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    dispatch({
+      type: ACTIONS.GET_FAVORITES,
+      payload: favorites,
+    });
+  };
+
   const values = {
     history,
     productsData: state.productsData,
     productDetails: state.productDetails,
     cart: state.cart,
+    favorites: state.favorites,
     pages: state.pages,
     getProductsData,
     getProductDetails,
@@ -158,6 +191,7 @@ const ProductContextProvider = ({ children }) => {
     addProductToCart,
     changeProductCount,
     buyProducts,
+    addProductToFavorites,
   };
 
   return <productContext.Provider value={values}>{children}</productContext.Provider>;

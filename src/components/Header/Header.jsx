@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
       dark: '#ba000d',
       contrastText: '#000',
     },
-    backgroundColor:'#e64a19'
+    // border:'2px solid white'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -43,19 +43,18 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    color:'black',
+    color:'white',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.35),
+    backgroundColor: alpha(theme.palette.common.white, 0.05),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.55),
+      backgroundColor: alpha(theme.palette.common.white, 0.1),
     },
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: '300px',
       width: '500px',
       
     },
-    border:"1px solid black",
+    border:"1px solid white",
     borderRadius:'15px'
   },
   searchIcon: {
@@ -68,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'black',
+    color:'white'
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -91,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  
 }));
 
 const Header = () => {
@@ -186,15 +186,31 @@ const Header = () => {
   );
 
   return (
+    <>
+    
     <div className={classes.grow}>
-      <AppBar position="static" style={{backgroundImage:"url(https://image.shutterstock.com/image-vector/legs-trendy-socks-variety-female-260nw-1681011220.jpg)"}}>
-        <Toolbar>
-          <Link to="/home" style ={{textDecoration: 'none', color:'black'}}>
+    <span style={{width:'100%', height:'1px', backgroundColor:'white'}}></span>
+      <AppBar position="static" style={{backgroundColor:'#141b3d', color:'white'}}>
+        <Toolbar style={{ display:'flex',justifyContent:'space-around'}}>
+          <Link to="/" style ={{textDecoration: 'none', color:'white'}}>
             <Typography className={classes.title} variant="h6" noWrap>
-
-              The Sock Of Fate
+              PUBG Poligon
             </Typography>
           </Link>
+          <div style={{marginLeft:'10px', display:'flex', justifyContent:'space-between', width:"30%" ,textDecoration:'none', }}>
+         <p className={classes.parg}><Link to="/" style ={{textDecoration: 'none', color:'grey',}}>
+              Home
+          </Link>
+          </p>
+          <p className={classes.parg}><Link to="/home" style ={{textDecoration: 'none', color:'grey',}}>
+              Products
+          </Link>
+          </p>
+        <p className={classes.parg}><Link to="/contacts" style ={{textDecoration: 'none',  color:'grey'}}>
+              Help center
+          </Link>
+          </p>
+          </div>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -209,9 +225,8 @@ const Header = () => {
               onChange={(e) => handleValue(e)}
             />
           </div>
-          <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Link to="/cart" style ={{textDecoration: 'none', color:'black'}}>
+            <Link to="/cart" style ={{textDecoration: 'none',color:'white'}}>
               <IconButton aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={cart.products ? cart.products.length : 0} color="secondary">
                   <ShoppingCart />
@@ -223,7 +238,7 @@ const Header = () => {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <AddCircleIcon style={{color:'black'}}/>
+              <AddCircleIcon style={{color:'white'}}/>
             </IconButton>
             <IconButton
     
@@ -235,7 +250,7 @@ const Header = () => {
               color="inherit"
             >
 
-              <AccountCircle style={{color:'black'}}/>
+              <AccountCircle style={{color:'white'}}/>
 
             </IconButton>
           </div>
@@ -254,7 +269,9 @@ const Header = () => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+    <span style={{width:'100%', height:'1px', backgroundColor:'white'}}></span>
     </div>
+    </>
   );
 };
 

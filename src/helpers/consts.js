@@ -15,3 +15,4 @@ export const ACTIONS = {
 };
 
 export const PRODUCT_LIMIT = 6;
+export const admin = "admin@gmail.com"

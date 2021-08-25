@@ -1,92 +1,102 @@
-import { Container, Grid, Typography, TextField, Button, CircularProgress } from '@material-ui/core';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from './../../contexts/AuthContext';
-import MuiAlert from '@material-ui/lab/Alert';
+import { Grid, makeStyles } from "@material-ui/core"
+import React, { useRef, useState } from "react"
+import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Link, useHistory } from "react-router-dom"
+import { useAuth } from "../../contexts/AuthContext"
+import Header from "../Header/Header"
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const useStyles = makeStyles((theme) => ({
+  size: {
+    width: '30%',
+    height: '60%',
+   display:'flex',
+   flexDirection:'column',
+   border:'2px solid black',
+   borderRadius:"10px",
+   backgroundColor:'#1e2645',
+   color:'white'
 
-const Login = () => {
-  const [newUser, setNewUser] = useState({});
+  },
+  grid: {
+    minHeight:"73vh"
+  },
+  color: {
+    color:'white',
+    fontSize:'14px'
+  },
+  btn: {
+    
+    width: '100px',
+    height: '40px',
+    fontSize:'18px',
 
-  const history = useHistory();
-  const { loginUser, user, loading, errorMessage, clearState } = useAuth();
+    border: 0,
+    borderRadius:'15px',
+    cursor:"pointer"
+  },
+  footChap:{
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'center',
+  }
+}))
+  const Login = () => {
+  const classes = useStyles()
 
-  const handleChange = (e) => {
-    let newObj = {
-      ...newUser,
-    };
-    newObj[e.target.name] = e.target.value;
-    setNewUser(newObj);
-  };
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
-  const signin = (e) => {
-    e.preventDefault();
+  async function handleSubmit(e) {
+    e.preventDefault()
+
     try {
-      loginUser(newUser);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    if (user) {
-      history.push('/home');
+      setError("")
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to log in")
     }
 
-    return () => {
-      clearState();
-    };
-  }, [user]);
+    setLoading(false)
+  }
 
   return (
-    <Container component="main" maxWidth="xs" style={{border:'1px solid black', marginTop:'30px', textAlign:'center', borderRadius:'15px'}}>
-      <form action="" onSubmit={signin}>
-        <Grid container>
-          <div>
-            <Typography variant="h5" style={{marginTop:'30px'}}>
-              Login
-            </Typography>
-            {errorMessage ? <Alert severity="error">{errorMessage}</Alert> : null}
+    <>
+    <Header/>
+    <Grid container justify="center" alignItems="center" className={classes.grid}>
+      <Card className={classes.size}>
+        <Card.Body>
+          <h2 className="text-center mb-4" style={{display:'flex', justifyContent:'center'}}>Вход</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Grid container justify="center" align="center">
+          <Form onSubmit={handleSubmit} >
+          <div style={{display: 'block', width: '150px', textAlign: 'left'}}>
+            <Form.Group id="email">
+              <Form.Control style={{width:'150px', height:'30px', borderRadius:"10px", marginBottom:"10px"}} type="email" placeholder="E-mail" ref={emailRef} required />
+            </Form.Group>
+            <Form.Group id="password">
+              <Form.Control style={{width:'150px', height:'30px', borderRadius:"10px"}} type="password" placeholder="Password" ref={passwordRef} required />
+            </Form.Group>
           </div>
-
-          <Grid>
-            <TextField
-             style={{margin:'20px 0 '}}
-              onChange={(e) => handleChange(e)}
-              name="email"
-              variant="outlined"
-              type="email"
-              required
-              label="Email Address"
-            />
-            <TextField 
-            style={{margin:'20px 0 '}}  
-            onChange={(e) => handleChange(e)} 
-            name="password" 
-            variant="outlined" 
-             type="password" 
-            required 
-            label="Password" />
-            <TextField
-            style={{margin:'20px 0 '}}
-              name="confirmPassword"
-             variant="outlined" 
-             type="password"
-             required 
-             label="Password again" />
+          <div className="footChap">
+            <Link className={classes.color} to="/forgot-password"><h4>Забыли пароль?</h4></Link>
+            <Link className={classes.color} to="/reg"><h4>Нужен аккаунт? Регистрируйтесь!</h4></Link>
+          </div>
+            <Button disabled={loading} className={classes.btn} type="submit" style={{marginBottom: '20px'}}>
+              LogIn
+            </Button>
+          </Form>
           </Grid>
-
-          <Button variant="contained" color="primary" type="submit" disabled={loading} style={{margin:'0 auto 10px'}}>
-            {loading ? <CircularProgress /> : 'Login'}
-          </Button>
-        </Grid>
-      </form>
-    </Container>
-  );
-};
-
+        </Card.Body>
+      </Card>
+    </Grid>
+    </>
+  )
+}
 export default Login;

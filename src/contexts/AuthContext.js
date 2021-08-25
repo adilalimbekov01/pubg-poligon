@@ -1,162 +1,65 @@
-import axios from 'axios';
-import React, { createContext, useContext, useReducer } from 'react';
-import { ACTIONS, AUTH_API_LOGIN } from '../helpers/consts';
-import { AUTH_API_REG } from './../helpers/consts';
-import jwt_decode from 'jwt-decode';
+import React, { useContext, useState, useEffect } from "react"
+import { auth } from "../components/fire"
 
 
-const authContext = createContext();
 
-const INIT_STATE = {
-  user: null,
-  loading: false,
-  success: false,
-  errorMessage: null,
-};
+const AuthContext = React.createContext()
 
-const reducer = (state = INIT_STATE, action) => {
-  switch (action.type) {
-    case ACTIONS.AUTH_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        success: true,
-        errorMessage: null,
-        user: action.payload,
-      };
-    case ACTIONS.AUTH_LOADING:
-      return {
-        ...state,
-        loading: true,
-      };
-    case ACTIONS.AUTH_ERROR:
-      return {
-        ...state,
-        loading: false,
-        user: null,
-        success: false,
-        errorMessage: action.payload,
-      };
-    case ACTIONS.CLEAR_AUTH_STATE:
-      return {
-        ...state,
-        loading: false,
-        success: false,
-        errorMessage: null,
-      };
-
-    case ACTIONS.AUTH_LOGOUT:
-      return {
-        user: null,
-        loading: false,
-        success: false,
-        errorMessage: null,
-      };
-
-    default:
-      return state;
-  }
-};
-
-export const useAuth = () => {
-  return useContext(authContext);
-};
+export function useAuth() {
+  return useContext(AuthContext)
+}
 
 const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const registerUser = async (newUser) => {
-    try {
-      dispatch({
-        type: ACTIONS.AUTH_LOADING,
-      });
-      const res = await axios.post(AUTH_API_REG, newUser);
-      if (res.status >= 200 && res.status <= 299) {
-        dispatch({
-          type: ACTIONS.AUTH_SUCCESS,
-          payload: null,
-        });
-      } else {
-        console.log('worked error');
-        dispatch({
-          type: ACTIONS.AUTH_ERROR,
-          payload: res.data.message,
-        });
-      }
-    } catch (error) {
-      dispatch({
-        type: ACTIONS.AUTH_ERROR,
-        payload: error.response.data.message,
-      });
-    }
-  };
+  const [currentUser, setCurrentUser] = useState()
+  const [loading, setLoading] = useState(true)
 
-  const loginUser = async (user) => {
-    try {
-      dispatch({ type: ACTIONS.AUTH_LOADING });
-      const res = await axios.post(AUTH_API_LOGIN, user);
-      const decoded = jwt_decode(res.data.token);
-      const decodedUser = {
-        email: decoded.id,
-        id: decoded.email,
-        exp: decoded.exp,
-        iat: decoded.iat,
-      };
-      localStorage.setItem('token', res.data.token);
-      dispatch({
-        type: ACTIONS.AUTH_SUCCESS,
-        payload: decodedUser,
-      });
-    } catch (error) {
-      dispatch({
-        type: ACTIONS.AUTH_ERROR,
-        payload: error.response.data.message,
-      });
-    }
-  };
+  function signup(email, password) {
+    return auth.createUserWithEmailAndPassword(email, password)
+  }
 
-  const checkAuth = () => {
-    const token = localStorage.getItem('token');
-    const decoded = jwt_decode(token);
-    if (Date.now() > token.exp * 1000) {
-      return;
-    }
-    dispatch({
-      type: ACTIONS.AUTH_SUCCESS,
-      payload: {
-        email: decoded.id,
-        id: decoded.email,
-        exp: decoded.exp,
-        iat: decoded.iat,
-      },
-    });
-  };
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+  }
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    dispatch({
-      type: ACTIONS.AUTH_LOGOUT,
-    });
-  };
+  function logout() {
+    return auth.signOut()
+  }
 
-  const clearState = () => {
-    dispatch({
-      type: ACTIONS.CLEAR_AUTH_STATE,
-    });
-  };
+  function resetPassword(email) {
+    return auth.sendPasswordResetEmail(email)
+  }
+
+  function updateEmail(email) {
+    return currentUser.updateEmail(email)
+  }
+
+  function updatePassword(password) {
+    return currentUser.updatePassword(password)
+  }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setCurrentUser(user)
+      setLoading(false)
+    })
+
+    return unsubscribe
+  }, [])
 
   const value = {
-    registerUser,
-    loginUser,
-    user: state.user,
-    loading: state.loading,
-    errorMessage: state.errorMessage,
-    success: state.success,
-    clearState,
-    checkAuth,
+    currentUser,
+    login,
+    signup,
     logout,
-  };
+    resetPassword,
+    updateEmail,
+    updatePassword
+  }
 
-  return <authContext.Provider value={value}>{children}</authContext.Provider>;
-};
-
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  )
+}
 export default AuthContextProvider;

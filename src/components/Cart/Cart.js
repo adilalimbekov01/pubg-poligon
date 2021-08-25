@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { useProducts } from '../../contexts/ProductContext';
 import { Button, Container, Input, Modal, Typography } from '@material-ui/core';
 import { useState } from 'react';
+import Header from '../Header/Header';
+import CreditCard from "../../credirCard/CreditCard"
 
 const useStyles = makeStyles({
   table: {
@@ -20,17 +22,18 @@ const useStyles = makeStyles({
     width: 50,
   },
   paper: {
+    backgroundColor:'#141b3d',
     position: 'absolute',
-    width: 500,
-    height:300,
-    backgroundColor:'#ff7043',
+    minWidth: '800px',
+    minHeight:'400px',
     border: '2px solid #000',
     borderRadius:'10px',
-    marginLeft:'500px',
-    marginTop:'200px',
+    marginLeft:'380px',
+    marginTop:'100px',
     display:"flex",
     flexDirection:'column',
-    alignItems:'center'
+    alignItems:'center',
+    color:'white'
   },
 });
 
@@ -65,7 +68,9 @@ export default function Cart() {
   };
 
   return (
-    <div style={{flex: '1 0 auto'}}>
+  <>
+    <Header />
+    <div style={{minHeight:'64vh'}}>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
@@ -110,7 +115,7 @@ export default function Cart() {
       </Table>
     </TableContainer>
     <Container style={{display:'flex', justifyContent:'flex-end'}}>
-    <Button style={{color:'white', backgroundColor:'#ffab91', marginTop:'20px'}} onClick={() => handleOpen()}>Buy</Button>
+    <Button style={{color:'white', backgroundColor:'#141b3d', marginTop:'20px'}} onClick={() => handleOpen()}>Buy</Button>
     </Container>
               {open == true ? <Modal
   disablePortal
@@ -122,14 +127,13 @@ export default function Cart() {
   className={classes.modal}
 >
   <div className={classes.paper}>
-    <h2 id="server-modal-title">Подтверждение покупки</h2>
-    <Input placeholder="Введите ваш телефон" style={{marginBottom:'20px'}}/>
-    <Input placeholder="Введите ваш адрес" style={{marginBottom:'20px'}}/>
-    <Input placeholder="Введите способ оплаты"/>
-    <Button style={{color:'white', backgroundColor:'#ffab91', marginTop:'40px'}} onClick={() => handleClose()}>Buy</Button>
+    <h2 id="server-modal-title">Enter info</h2>
+    <CreditCard/>
+    <Button style={{color:'#141b3d', backgroundColor:'white', margin:'40px 0'}} onClick={() => handleClose()}>Buy</Button>
   </div>
 </Modal>: null}
     
     </div>
+    </>
   );
 }

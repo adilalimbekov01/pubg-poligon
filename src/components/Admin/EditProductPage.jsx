@@ -10,9 +10,10 @@ import CancelIcon from '@material-ui/icons/Cancel';
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
+    color: '#141b3d',
     margin: '40px auto',
     maxWidth: 800,
+    maxHeight:430
   },
   title: {
     textAlign: "center",
@@ -58,7 +59,7 @@ const EditProductPage = () => {
     <Paper elevation={3} className={classes.paper}>
       <h1 className={classes.title}>Add Product</h1>
       <Container className={classes.container}>
-        <img style={{width: 400}} src={product.image ? product.image : "https://i.ytimg.com/vi/qvE00WdAUI4/sddefault.jpg"}/>
+        <img style={{maxWidth: 400, maxHeight:400, cover:'100%'}} src={product.image ? product.image : "https://img.icons8.com/windows/452/pubg.png"}/>
         <form className={classes.form} noValidate autoComplete="off">
           <TextField
           name="title"

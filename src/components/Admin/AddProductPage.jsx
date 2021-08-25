@@ -6,13 +6,14 @@ import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Button } from '@material-ui/core';
 import { useProducts } from '../../contexts/ProductContext';
+import Header from '../Header/Header';
 
 
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
-    margin: '40px auto',
+    margin: '0 auto',
     maxWidth: 800,
   },
   title: {
@@ -50,6 +51,7 @@ const AddProductPage = () => {
     image: '',
     description: '',
     price: 0,
+    comment:[]
   })
 
   const handleInp = (e) => {
@@ -62,10 +64,13 @@ const AddProductPage = () => {
   }
 
   return (
+    <>
+    <Header/>
+    <div style={{backgroundColor:'#141b3d', padding:'40px 0'}}>
     <Paper elevation={3} className={classes.paper}>
       <h1 className={classes.title}>Add Product</h1>
       <Container className={classes.container}>
-        <img width='330' src={product.image ? product.image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv1kZlUTKT7IWUFztlraEZIEXAYHb1QPwhiQ&usqp=CAU"}/>
+        <img width='330' src={product.image ? product.image : "https://img.icons8.com/windows/452/pubg.png"}/>
         <form className={classes.form} noValidate autoComplete="off">
           <TextField
           name="title"
@@ -113,6 +118,8 @@ const AddProductPage = () => {
         </form>
       </Container>
     </Paper>
+    </div>
+    </>
   );
 };
 

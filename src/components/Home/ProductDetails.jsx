@@ -8,21 +8,27 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { CircularProgress, Container } from '@material-ui/core';
+import Header from '../Header/Header';
+import Comments from '../../comments/Comment';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: "100%",
-    marginTop:'20px',
-    
+    width: "55%",
+    margin:"0 auto",
+    marginTop:'50px',
+    minHeight:'70vh',
+    fontSize:'16px'
   },
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: "80%",
-    border:'2px solid #e57373',
-    borderRadius:'10px'
+    border:'2px solid #141b3d',
+    borderRadius:'10px',
+    backgroundColor:"#141b3d",
+    color:"white"
   },
   image: {
     // height: "50%",
@@ -58,6 +64,7 @@ const ProductDetails = () => {
 
   return (
     <>
+    <Header/>
     {productDetails && productDetails.image ?
       <div className={classes.root}>
         <Paper className={classes.paper}>
@@ -68,39 +75,34 @@ const ProductDetails = () => {
               </ButtonBase>
             </Grid>
             <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs container direction="column" spacing={2} style={{maxWidth:'250px'}}>
                 <Grid item xs>
                   <Typography gutterBottom variant="subtitle1">
-                    {productDetails.title}
+                  <b>Quantity:</b> {productDetails.title}
                   </Typography>
                   <Typography variant="body2" gutterBottom>
-                    {productDetails.type}
+                    <b>Type:</b> {productDetails.type}
                   </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    ID: {productDetails.id}
-                  </Typography>
-                </Grid>
-                <Grid item>
                   <Typography variant="p">
-                    {productDetails.description}
+                   <b>Description:</b>  {productDetails.description}
                   </Typography>
-                  <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                    Remove
-                  </Typography>
+      
                 </Grid>
               </Grid>
               <Grid item>
-                <Typography style={{color:'#f44336'}} variant="subtitle1">{productDetails.price}$</Typography>
+                <Typography style={{color:'#141b3d'}} variant="subtitle1">{productDetails.price}$</Typography>
               </Grid>
             </Grid>
           </Grid>
         </Paper>
+        <Comments/>
       </div>
     :
     <Container>
     <CircularProgress />
     </Container>
 }
+    
     </>
   );
 };

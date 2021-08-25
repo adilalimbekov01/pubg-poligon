@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from '../components/Header/Header';
 import Home from '../components/Home/Home';
 import ProductContextProvider from './../contexts/ProductContext';
 import ProductDetails from './../components/Home/ProductDetails';
@@ -13,13 +12,13 @@ import Main from '../components/Home/Main';
 import AboutUs from '../components/Home/AboutUs';
 import Contacts from '../components/Home/Contacts';
 import Footer from '../components/Footer/Footer';
-import ProductList from '../components/Home/ProductList';
+import ResetPassword from '../components/Auth/ResetPassword';
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <ProductContextProvider>
-        <Header />
+        
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
@@ -31,6 +30,7 @@ const Routes = () => {
           <Route exact path="/edit/:id" component={EditProductPage} />
           <Route exact path='/aboutus' component={AboutUs} />
           <Route exact path="/contacts" component={Contacts} />
+          <Route exact path="/resetpass" component={ResetPassword} />
         </Switch>
         <Footer />
       </ProductContextProvider>
